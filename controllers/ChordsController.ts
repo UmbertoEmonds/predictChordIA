@@ -24,7 +24,7 @@ const predictChord = ((request, response) => {
         const predRouned = Math.round(predData);
         
         let responseData: PredictResponse = {
-            rawData: predRouned,
+            rawData: predData,
             rawDataRounded: predRouned,
             chord: getByValue(constants.REF_NOTES, predRouned)
         }

@@ -51,8 +51,6 @@ constants.setTensorData(tensorData);
 modelUtils.trainModel(modelUtils.getModel(), inputs, labels);
 console.log("Entrainement terminé");
 function convertToTensor(data) {
-    // Wrapping these calculations in a tidy will dispose any
-    // intermediate tensors.
     return tf.tidy(() => {
         // Step 1. Shuffle the data
         tf.util.shuffle(data);

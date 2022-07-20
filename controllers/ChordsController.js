@@ -33,9 +33,11 @@ const predictChord = ((request, response) => {
         const valueNormalized = valueToPredict.sub(labelMin).div(labelMax.sub(labelMin));
         const preds = modelUtils.getModel().predict(valueNormalized);
         const predUnnormalized = preds.mul(labelMax.sub(labelMin)).add(labelMin);
-        const predRouned = Math.round(predUnnormalized.dataSync()[0]);
+        const predData = predUnnormalized.dataSync()[0];
+        const predRouned = Math.round(predData);
         let responseData = {
-            rawData: predRouned,
+            rawData: predData,
+            rawDataRounded: predRouned,
             chord: getByValue(constants.REF_NOTES, predRouned)
         };
         return response.send(responseData);
